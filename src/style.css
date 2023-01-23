@@ -1,0 +1,63 @@
+header {
+  display: flex;
+  justify-content: space-between;
+  background-color: aqua;
+  border: 1px solid black;
+}
+
+.logo {
+  display: flex;
+  margin: 10px 20px;
+}
+
+p,
+img {
+  display: inline-block;
+  align-self: center;
+  margin: 0 5px;
+}
+
+header img {
+  width: 50px;
+  height: 50px;
+}
+
+.carrinho {
+  position: relative;
+  align-self: center;
+  margin: 0 10px;
+}
+
+.contador-carrinho {
+  position: absolute;
+  top: 17px;
+  right: 22px;
+  background-color: red;
+  border: 1px solid black;
+  border-radius: 50%;
+  padding: 8px;
+  padding-top: 2px;
+  width: 8px;
+  height: 8px;
+}
+
+.card {
+  border: 1px solid black;
+  margin: 10px 20px;
+  padding: 10px 20px;
+  width: 30%;
+}
+
+.card h1,
+.card h2,
+.card h2 {
+  text-align: center;
+}
+
+.card img {
+  width: 100%;
+}
+
+.card-input {
+  margin-left: 50px;
+}

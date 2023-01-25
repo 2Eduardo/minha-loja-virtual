@@ -1,27 +1,21 @@
 import { Carrinho } from "../models";
 import { produtoService } from "./ProdutoService";
 
-export const carrinho: Carrinho = {
-  produtos: new Map(),
-  precoTotal: 0,
-  contadorProdutos: 0,
-};
-
-export const carrinhoService = {
-  async adicionarAoCarrinho(produtoId: number) {
+export const CarrinhoService = (carrinho: Carrinho) => {
+  const adicionarAoCarrinho = async (produtoId: number) => {
     const produto = await produtoService.getProdutoById(produtoId);
     carrinho.precoTotal += produto!.price;
-    
+
     if (carrinho.produtos.has(produtoId)) {
       carrinho.produtos.set(produtoId, carrinho.produtos.get(produtoId)! + 1);
     } else {
       carrinho.produtos.set(produtoId, 1);
     }
-    
+
     carrinho.contadorProdutos++;
-  },
-  
-  async removerDoCarrinho(produtoId: number) {
+  }
+
+  const removerDoCarrinho = async (produtoId: number) => {
     const produto = await produtoService.getProdutoById(produtoId);
 
     if (carrinho.produtos.has(produtoId)) {
@@ -37,4 +31,10 @@ export const carrinhoService = {
       carrinho.contadorProdutos--;
     }
   }
+
+  const procurarPorId = (produtoId: number) => {
+    return carrinho.produtos.get(produtoId);
+  }
+
+  return { adicionarAoCarrinho, removerDoCarrinho, procurarPorId };
 };

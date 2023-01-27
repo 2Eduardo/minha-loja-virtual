@@ -59,11 +59,10 @@ header img {
 .produtos-container {
   display: grid;
   grid-template-columns: 30% 30% 30%;
-  margin-left: 100px;
+  justify-content: center;
 }
 
 .card {
-  /* border: 1px solid black; */
   margin: 10px 20px;
   padding: 10px 20px;
   background-color: rgb(237, 234, 234);
@@ -72,10 +71,13 @@ header img {
 
 .card:hover {
   box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2), 0 4px 20px 0 rgba(0, 0, 0, 0.19);
+  transition: 1s;
 }
 
 .title {
-  min-height: 80px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .card img {
@@ -97,5 +99,5 @@ header img {
 .card-input input {
   display: block;
   margin: 10px auto;
-  /* margin-left: 50px; */
+  min-width: 50%;
 }

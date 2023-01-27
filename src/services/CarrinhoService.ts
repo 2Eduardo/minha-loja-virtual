@@ -32,9 +32,9 @@ export const CarrinhoService = (carrinho: Carrinho) => {
     }
   }
 
-  const procurarPorId = (produtoId: number) => {
+  const hasProductId = (produtoId: number) => {
     return carrinho.produtos.get(produtoId);
   }
 
-  return { adicionarAoCarrinho, removerDoCarrinho, procurarPorId };
+  return { adicionarAoCarrinho, removerDoCarrinho, hasProductId };
 };

@@ -25,15 +25,20 @@ import './style.css'
 
     document.querySelectorAll("input").forEach(input => {
       const [tipo, id] = input.id.split("-");
+      const productAlreadyInCar = carinhoService.hasProductId(parseInt(id));
 
       if (tipo === "add") {
+        if (productAlreadyInCar) {
+          input.value = "+";
+        }
+
         input.onclick = async (_) => {
           await carinhoService.adicionarAoCarrinho(parseInt(id));
           carrinhoStore.saveCarrinho(carrinho);
           update();
         }
       } else {
-        if (!carinhoService.procurarPorId(parseInt(id))) {
+        if (!productAlreadyInCar) {
           input.style.display = "none";
         } else {
           input.style.display = "block";

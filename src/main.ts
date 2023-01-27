@@ -15,12 +15,10 @@ import './style.css'
   };
   const carinhoService = CarrinhoService(carrinho);
 
-  console.log(carrinho);
-
   function update() {
     document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
   ${Header(carrinho)}
-  <div class="container">
+  <div class="produtos-container">
     ${produtos.map((produto: Produto) => Card(produto)).join("")}
   </div>
   `;
@@ -38,7 +36,7 @@ import './style.css'
         if (!carinhoService.procurarPorId(parseInt(id))) {
           input.style.display = "none";
         } else {
-          input.style.display = "inline-block";
+          input.style.display = "block";
         }
 
         input.onclick = async (_) => {
@@ -47,6 +45,20 @@ import './style.css'
           update();
         }
       }
+    });
+
+    const carrinhoDiv = document.querySelector(".carrinho");
+    carrinhoDiv?.addEventListener("click", () => {
+
+      carrinho.produtos.forEach(async (qtde, produtoId) => {
+        const produto = await produtoService.getProdutoById(produtoId);
+        alert(`
+          Produto: ${produto.title} \n 
+          Preço: ${produto.price} \n 
+          Quantidade: ${qtde} \n 
+          Total: ${produto.price * qtde}
+        `);
+      })
     });
   }
 

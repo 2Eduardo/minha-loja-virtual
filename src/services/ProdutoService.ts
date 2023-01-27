@@ -6,7 +6,7 @@ export const produtoService = {
     return produtos.products;
   },
 
-  async getProdutoById(id: number) {
+  async getProdutoById(id: number) : Promise<Produto> {
     const produto = await this.readAll().then((produtos) =>
       produtos.find((produto: Produto) => produto.id === id));
     return produto;
